@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
-const ServerError = require('../errors/ServerError');
 const env = process.env.NODE_ENV || 'development';
 const { FILES_PATH } = require('../constants');
 const devFilePath = path.resolve(FILES_PATH, 'images');
