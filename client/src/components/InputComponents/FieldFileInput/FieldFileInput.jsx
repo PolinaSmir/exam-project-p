@@ -3,7 +3,6 @@ import { useField } from 'formik';
 
 const FieldFileInput = ({ classes, name, ...rest }) => {
   const { fileUploadContainer, labelClass, fileNameClass, fileInput } = classes;
-  console.log(useField(name));
 
   const [{ value, ...restField }, meta, helpers] = useField(name);
 
