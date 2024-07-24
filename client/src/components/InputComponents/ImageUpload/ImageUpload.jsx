@@ -10,7 +10,6 @@ const ImageUpload = (props) => {
     const node = window.document.getElementById('imagePreview');
     const file = e.target.files[0];
     const imageType = /image.*/;
-    console.log(file);
     if (!file.type.match(imageType)) {
       e.target.value = '';
     } else {
