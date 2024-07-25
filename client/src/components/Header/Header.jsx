@@ -8,6 +8,7 @@ import { getUser } from '../../store/slices/userSlice';
 
 class Header extends React.Component {
   componentDidMount() {
+    console.log(this.props);
     if (!this.props.data) {
       this.props.getUser();
     }
@@ -165,7 +166,7 @@ class Header extends React.Component {
                   />
                   <ul>
                     <li>
-                      <a href="http://www.google.com">HOW IT WORKS</a>
+                      <a href="/how-it-works">HOW IT WORKS</a>
                     </li>
                     <li>
                       <a href="http://www.google.com">PRICING</a>
