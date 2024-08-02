@@ -9,8 +9,6 @@ const chatController = require('../controllers/chatController');
 const upload = require('../utils/fileUpload');
 const router = express.Router();
 
-router.post('/how-it-works');
-
 router.post(
   '/registration',
   validators.validateRegistrationData,
