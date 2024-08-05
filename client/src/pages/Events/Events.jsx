@@ -1,34 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Form, Formik, Field } from 'formik';
-import FormInput from '../../components/FormInput/FormInput';
-import CONSTANTS from '../../constants';
 import Schems from '../../utils/validators/validationSchems';
 import { changeIsEdit } from '../../store/slices/eventSlice';
 import TimerContainer from '../../components/TimerContainer/TimerContainer';
 import styles from './Events.module.sass';
+import moment from 'moment';
 
 const Events = (props) => {
   const {
     event: { isEdit, isFetching, timers },
   } = props;
-  console.log(props);
 
   const [newTimer, setNewTimer] = useState(timers);
-  console.log(newTimer);
+  const [duration, setDuration] = useState(0);
 
   const submitHandler = (values) => {
-    console.log(values);
+    const { name, date, time, alarmTime } = values;
+
+    const momentObj = moment(date + time, 'YYYY-MM-DDLT');
+
+    const dateTime = momentObj.format('YYYY-MM-DDTHH:mm:ss');
+    console.log(dateTime);
+
+    const durationFull = moment.duration(moment(dateTime).diff(moment()));
+    setDuration(durationFull);
+
     setNewTimer((prevTimers) => [
       ...prevTimers,
       {
-        name: values.name,
-        date: values.date,
-        time: values.time,
-        alarmTime: values.alarmTime,
+        name: name,
+        date: date,
+        time: time,
+        alarmTime: alarmTime,
       },
     ]);
   };
+
   return (
     <section className={styles.container}>
       <div className={styles.header}>
@@ -39,6 +47,7 @@ const Events = (props) => {
       <TimerContainer
         isFetching={isFetching}
         timers={newTimer}
+        duration={duration}
       ></TimerContainer>
 
       <div className={styles.createBtn} onClick={props.createTimerForm}>

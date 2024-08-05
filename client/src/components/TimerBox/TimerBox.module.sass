@@ -1,8 +1,21 @@
 .box
+  position: relative
   display: flex
   align-items: center
-  padding: 20px
+  
   background-color: #dddddd
-  border-radius: 10px
+  border-radius: 5px
   margin: 20px 0px
   justify-content: space-between
+
+  p
+    padding: 20px
+  
+  .progress
+    position: absolute
+    background-color: green
+    border-radius: 5px
+    height: 100%
+    opacity: .25
+    transition: width 0.5s linear
+
