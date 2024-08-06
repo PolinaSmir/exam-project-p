@@ -37,5 +37,34 @@
       flex-direction: column
       margin: 20px 0px 10px 0px
 
+    .inputContainer
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-self: stretch
+      margin-right: 20px
+      margin-left: 20px
+
+      .input
+        background-color: white
+        border-radius: 4px
+        color: #9ca8b7
+        font-size: 18px
+        padding: 23px 20px 23px 20px
+        outline: none
+        margin-bottom: 15px
+        flex: 1
+        @media(max-width: 1400px)
+          align-self: normal
+
+      .notValid
+        border: 2px solid red !important
+
+      .valid
+        border: 2px solid green
+
+      .warning
+        color: red
+
     button
       margin-top: 20px

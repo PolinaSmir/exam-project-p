@@ -6,7 +6,7 @@ const TimerBox = (props) => {
   const { duration } = props;
   const { name, date, time, alarmTime } = props.timer;
   const [remainingTime, setRemainingTime] = useState('');
-  const [progress, setProgress] = useState(1);
+  const [progress, setProgress] = useState(0);
 
   const getRemainingTime = () => {
     const momentObj = moment(date + time, 'YYYY-MM-DDLT');
@@ -31,7 +31,7 @@ const TimerBox = (props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setRemainingTime(getRemainingTime());
-    }, 1000);
+    }, 0);
 
     return () => clearInterval(interval);
   }, []);

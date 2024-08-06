@@ -1,7 +1,27 @@
 import * as yup from 'yup';
 import valid from 'card-validator';
+import moment from 'moment';
 
 export default {
+  EventsSchem: yup.object({
+    name: yup.string().required('Name is required'),
+    date: yup
+      .date()
+      .min(moment().subtract(1, 'days'))
+      .required('Date is required'),
+    time: yup
+      .string()
+      // .test('is-greater', 'time should be greater', (value) => {
+      //   // console.log(ctx.parent.date);
+      //   // console.log(moment(ctx.parent.date).format('HH:mm'));
+      //   console.log(moment().format('HH:mm'));
+
+      //   // return moment(value, 'HH:mm').min(moment().format('HH:mm')).toString();
+      // })
+      .required('Time is required'),
+    alarmTime: yup.number(),
+  }),
+
   LoginSchem: yup.object().shape({
     email: yup.string().email('check email').required('required'),
     password: yup

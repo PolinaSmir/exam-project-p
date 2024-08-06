@@ -13,6 +13,9 @@ const reducers = {
   changeIsEdit: (state) => {
     state.isEdit = !state.isEdit;
   },
+  setTimers: (state, action) => {
+    state.timers = [...state.timers, action.payload];
+  },
 };
 
 const eventSlice = createSlice({
@@ -23,7 +26,7 @@ const eventSlice = createSlice({
 
 const { actions, reducer } = eventSlice;
 
-export const { changeIsEdit } = actions;
+export const { changeIsEdit, setTimers } = actions;
 
 export default reducer;
 
