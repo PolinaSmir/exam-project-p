@@ -12,18 +12,19 @@ const Events = (props) => {
   const {
     event: { isEdit, isFetching, timers },
   } = props;
-  console.log(props);
+  // console.log(props);
 
   const [duration, setDuration] = useState(0);
 
   const submitHandler = (values) => {
     const { name, date, time, alarmTime } = values;
     console.log(moment());
+    console.log(date);
+    console.log(time);
 
     const momentObj = moment(date + time, 'YYYY-MM-DDLT');
 
     const dateTime = momentObj.format('YYYY-MM-DDTHH:mm:ss');
-    console.log(dateTime);
 
     // const diff = moment.duration(moment(dateTime).diff(moment()));
     // const {
@@ -68,7 +69,7 @@ const Events = (props) => {
         Create new timer
       </div>
       {isEdit ? (
-        <Formik // Formik turn into separate component
+        <Formik
           initialValues={{
             name: '',
             date: '',
@@ -80,7 +81,6 @@ const Events = (props) => {
         >
           <Form className={styles.form}>
             <label>Name of the event</label>
-            {/* <Field name="name" type="text" placeholder="" /> */}
             <FormInput
               classes={formInputClasses}
               name="name"
@@ -88,7 +88,6 @@ const Events = (props) => {
               label="Type name of event"
             />
             <label>Date of the event</label>
-            {/* <Field name="date" type="date" /> */}
             <FormInput
               classes={formInputClasses}
               name="date"
@@ -96,7 +95,6 @@ const Events = (props) => {
               label=""
             />
             <label>Time of the event</label>
-            {/* <Field name="time" type="time" /> */}
             <FormInput
               classes={formInputClasses}
               name="time"

@@ -11,13 +11,17 @@ export default {
       .required('Date is required'),
     time: yup
       .string()
-      // .test('is-greater', 'time should be greater', (value) => {
-      //   // console.log(ctx.parent.date);
-      //   // console.log(moment(ctx.parent.date).format('HH:mm'));
-      //   console.log(moment().format('HH:mm'));
+      .test('is-greater', 'time should be greater', (value, ctx) => {
+        const formattedDate = moment(ctx.parent.date).format('YYYY-MM-DD');
 
-      //   // return moment(value, 'HH:mm').min(moment().format('HH:mm')).toString();
-      // })
+        const currentDateTime = new Date();
+
+        const momentObj = moment(formattedDate + value, 'YYYY-MM-DDLT');
+        const dateTime = momentObj.format('YYYY-MM-DDTHH:mm:ss');
+        const newDateTime = new Date(dateTime);
+
+        return currentDateTime < newDateTime;
+      })
       .required('Time is required'),
     alarmTime: yup.number(),
   }),
