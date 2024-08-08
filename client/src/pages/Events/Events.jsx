@@ -12,34 +12,21 @@ const Events = (props) => {
   const {
     event: { isEdit, isFetching, timers },
   } = props;
-  // console.log(props);
-
-  const [duration, setDuration] = useState(0);
 
   const submitHandler = (values) => {
     const { name, date, time, alarmTime } = values;
-    console.log(moment());
-    console.log(date);
-    console.log(time);
 
     const momentObj = moment(date + time, 'YYYY-MM-DDLT');
 
     const dateTime = momentObj.format('YYYY-MM-DDTHH:mm:ss');
 
-    // const diff = moment.duration(moment(dateTime).diff(moment()));
-    // const {
-    //   _data: { days, hours, minutes, seconds },
-    //   _milliseconds,
-    // } = diff;
+    const diff = moment.duration(moment(dateTime).diff(moment()));
+    const {
+      _data: { days, hours, minutes, seconds },
+      _milliseconds,
+    } = diff;
 
-    // values.remainingTime = `${days > 0 ? `${days}d` : ''} ${
-    //   hours > 0 ? `${hours}h` : ''
-    // } ${minutes > 0 ? `${minutes}m` : ''} ${
-    //   seconds > 0 ? `${seconds}sec` : ''
-    // }`;
-
-    const durationFull = moment.duration(moment(dateTime).diff(moment()));
-    setDuration(durationFull);
+    values.duration = _milliseconds;
 
     props.setTimers(values);
   };
@@ -59,11 +46,7 @@ const Events = (props) => {
         <p>Remaining time</p>
       </div>
 
-      <TimerContainer
-        isFetching={isFetching}
-        timers={timers}
-        duration={duration}
-      ></TimerContainer>
+      <TimerContainer isFetching={isFetching} timers={timers}></TimerContainer>
 
       <div className={styles.createBtn} onClick={props.createTimerForm}>
         Create new timer
@@ -75,6 +58,7 @@ const Events = (props) => {
             date: '',
             time: '',
             alarmTime: '',
+            duration: 0,
           }}
           onSubmit={submitHandler}
           validationSchema={Schems.EventsSchem}
@@ -108,6 +92,12 @@ const Events = (props) => {
               name="alarmTime"
               type="text"
               placeholder="alert time in minutes"
+              classes={formInputClasses}
+            />
+            <FormInput
+              name="duration"
+              type="hidden"
+              placeholder="duration"
               classes={formInputClasses}
             />
             <button type="submit">Create</button>

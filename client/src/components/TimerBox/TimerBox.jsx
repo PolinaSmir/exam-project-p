@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styles from './TimerBox.module.sass';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const TimerBox = (props) => {
-  const { duration } = props;
-  const { name, date, time, alarmTime } = props.timer;
+  const { name, date, time, alarmTime, duration } = props.timer;
   const [remainingTime, setRemainingTime] = useState('');
   const [progress, setProgress] = useState(0);
+
+  const show = () => {
+    toast.error('Time is up!');
+  }; // тостик должен вылетать когда время выйдет и за установленное время до конца таймера
 
   const getRemainingTime = () => {
     const momentObj = moment(date + time, 'YYYY-MM-DDLT');
@@ -20,7 +24,6 @@ const TimerBox = (props) => {
       _milliseconds,
     } = diff;
 
-    // setProgress(Math.round(1-_milliseconds/duration)*100);
     setProgress((1 - _milliseconds / duration) * 100);
 
     return `${days > 0 ? `${days}d` : ''} ${hours > 0 ? `${hours}h` : ''} ${

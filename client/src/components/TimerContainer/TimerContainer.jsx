@@ -4,56 +4,17 @@ import styles from './TimerContainer.module.sass';
 import moment from 'moment';
 
 const TimerContainer = (props) => {
-  const { timers, duration } = props;
+  const { timers } = props;
 
-  // const getTimersWithDiff = () => {
-  //   timers.map((o) => {
-  //     const { date, time } = o;
-
-  //     const momentObj = moment(date + time, 'YYYY-MM-DDLT');
-  //     const dateTime = momentObj.format('YYYY-MM-DDTHH:mm:ss');
-
-  //     o.diff = moment(dateTime).diff(moment());
-  //   });
-
-  //   timers.sort(function (a, b) {
-  //     console.log(a, b);
-  //     if (a.diff > b.diff) {
-  //       return 1;
-  //     }
-  //     if (a.diff < b.diff) {
-  //       return -1;
-  //     }
-  //     return 0;
-  //   });
-
-  //   console.log(timers);
-  //   return timers.map((timer, index) => (
-  //     <TimerBox key={index} timer={timer} duration={duration} />
-  //   ));
-  // };
-  // getTimersWithDiff();
-  // console.log(getMappedArray());
-  // useEffect(() => {});
+  const arrForSorting = [...timers];
+  const sortedTimers = arrForSorting.sort((a, b) => a.duration - b.duration); // отсортированный массив
+  // console.log(sortedTimers);
 
   return (
     <div className={styles.wrapper}>
       <ul>
-        {/* {timers && timers.length > 0 ? (
-          timers.map((timer, index) => (
-            <TimerBox key={index} timer={timer} duration={duration} />
-          ))
-        ) : timers && timers.length > 1 ? (
-          getTimersWithDiff()
-        ) : (
-          <p>Seems lonely in here, what are you up to?</p>
-        )} */}
         {timers && timers.length > 0 ? (
-          timers
-            .map((timer, index) => (
-              <TimerBox key={index} timer={timer} duration={duration} />
-            ))
-            .sort((a, b) => console.log(a.props, b.props))
+          timers.map((timer, index) => <TimerBox key={index} timer={timer} />) // Если сюда поставить sortedTimers, то происходит баг с отображением remainingTime
         ) : (
           <p>Seems lonely in here, what are you up to?</p>
         )}

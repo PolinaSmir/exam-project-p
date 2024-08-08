@@ -29,10 +29,3 @@ const { actions, reducer } = eventSlice;
 export const { changeIsEdit, setTimers } = actions;
 
 export default reducer;
-
-//Test data in timers {
-//   name: 'Timer',
-//   date: '2024-08-09',
-//   time: '21:40',
-//   alarmTime: '12',
-// },
