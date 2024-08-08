@@ -13,6 +13,7 @@ import FormTextArea from '../InputComponents/FormTextArea/FormTextArea';
 import TryAgain from '../TryAgain/TryAgain';
 import Schems from '../../utils/validators/validationSchems';
 import OptionalSelects from '../OptionalSelects/OptionalSelects';
+import ButtonGroup from '../ButtonGroup/ButtonGroup';
 
 const variableOptions = {
   [CONSTANTS.NAME_CONTEST]: {
@@ -68,6 +69,7 @@ class ContestForm extends React.Component {
         <div className={styles.formContainer}>
           <Formik
             initialValues={{
+              buttonGroup: '',
               title: '',
               industry: '',
               focusOfWork: '',
@@ -82,6 +84,12 @@ class ContestForm extends React.Component {
             enableReinitialize
           >
             <Form>
+              <div className={styles.inputContainer}>
+                <span className={styles.inputHeader}>
+                  Do you want a matching domain(.com URL) with your name?
+                </span>
+                <ButtonGroup />
+              </div>
               <div className={styles.inputContainer}>
                 <span className={styles.inputHeader}>Title of contest</span>
                 <FormInput
