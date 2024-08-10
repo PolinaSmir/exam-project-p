@@ -1,0 +1,4 @@
+Запрос через MongoDB Compass
+
+Запрос: db.messages.find({body: "паровоз"}).count()
+Ответ: 2
