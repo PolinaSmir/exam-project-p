@@ -1,0 +1,109 @@
+{message: "Wrong password", time: 1723719450904, code: 404, stackTrace: {UserNotFoundError: Wrong password
+    at module.exports.passwordCompare (/server/src/controllers/queries/userQueries.js:36:11)
+    at async module.exports.login (/server/src/controllers/userController.js:15:5)}
+{message: "Wrong password", time: 1723719452553, code: 404, stackTrace: {UserNotFoundError: Wrong password
+    at module.exports.passwordCompare (/server/src/controllers/queries/userQueries.js:36:11)
+    at async module.exports.login (/server/src/controllers/userController.js:15:5)}
+{message: "token error", time: 1723727767525, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
+{message: "token error", time: 1723727767527, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
+{message: "token error", time: 1723727767530, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
+{message: "token error", time: 1723727767777, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
+{message: "token error", time: 1723727767781, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
+{message: "token error", time: 1723727774790, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
+{message: "token error", time: 1723727774792, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
+{message: "user with this data didn`t exist", time: 1723727782339, code: 404, stackTrace: {UserNotFoundError: user with this data didn`t exist
+    at module.exports.findUser (/server/src/controllers/queries/userQueries.js:18:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async module.exports.login (/server/src/controllers/userController.js:14:23)}
+{message: "token error", time: 1724350605739, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
+{message: "token error", time: 1724350605747, code: 408, stackTrace: {TokenError: token error
+    at module.exports.checkAuth (/server/src/middlewares/checkToken.js:25:10)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/server/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/server/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/server/node_modules/express/lib/router/layer.js:95:5)
+    at /server/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/server/node_modules/express/lib/router/index.js:346:12)
+    at next (/server/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/server/node_modules/express/lib/router/index.js:175:3)
+    at router (/server/node_modules/express/lib/router/index.js:47:12)}
