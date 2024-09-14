@@ -39,18 +39,29 @@ class ContestPage extends React.Component {
   };
 
   setOffersList = () => {
+    console.log(this.props);
+    // const { offers } = this.props.contestByIdStore;
+    // console.log(offers);
     const array = [];
     for (let i = 0; i < this.props.contestByIdStore.offers.length; i++) {
-      array.push(
-        <OfferBox
-          data={this.props.contestByIdStore.offers[i]}
-          key={this.props.contestByIdStore.offers[i].id}
-          needButtons={this.needButtons}
-          setOfferStatus={this.setOfferStatus}
-          contestType={this.props.contestByIdStore.contestData.contestType}
-          date={new Date()}
-        />
-      );
+      // const { offers } = this.props.contestByIdStore;
+      console.log(this.props.contestByIdStore.offers[i].moderatorstatus); //moderatorstatus of each
+      if (
+        this.props.contestByIdStore.offers[i].moderatorstatus ===
+          CONSTANTS.OFFER_MODERATOR_STATUS_APPROVED ||
+        this.props.userStore.data.role === CONSTANTS.CREATOR
+      ) {
+        array.push(
+          <OfferBox
+            data={this.props.contestByIdStore.offers[i]}
+            key={this.props.contestByIdStore.offers[i].id}
+            needButtons={this.needButtons}
+            setOfferStatus={this.setOfferStatus}
+            contestType={this.props.contestByIdStore.contestData.contestType}
+            date={new Date()}
+          />
+        );
+      }
     }
     return array.length !== 0 ? (
       array
@@ -62,6 +73,7 @@ class ContestPage extends React.Component {
   };
 
   needButtons = (offerStatus) => {
+    // console.log(offerStatus);
     const contestCreatorId = this.props.contestByIdStore.contestData.User.id;
     const userId = this.props.userStore.data.id;
     const contestStatus = this.props.contestByIdStore.contestData.status;
