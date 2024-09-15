@@ -1,4 +1,3 @@
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Offers', {
@@ -39,6 +38,11 @@ module.exports = {
       status: {
         type: Sequelize.STRING,
         allowNull: true,
+        defaultValue: 'pending',
+      },
+      moderatorstatus: {
+        type: Sequelize.STRING,
+        allowNull: false,
         defaultValue: 'pending',
       },
     });
