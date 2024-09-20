@@ -107,12 +107,31 @@ const OfferBox = (props) => {
     });
   };
 
-  const { data, role, id, contestType, noUserDataForNow } = props;
-  // if (noUserDataForNow === false) {
+  const checkForRender = () => {
+    if (props.needModeratorButtons) {
+      props.needModeratorButtons(props.data.moderatorstatus);
+      return <button>HI</button>;
+    } else if (props.needButtons) {
+      return (
+        props.needButtons(data.status) && (
+          <div className={styles.btnsContainer}>
+            <div onClick={resolveOffer} className={styles.resolveBtn}>
+              Resolve
+            </div>
+            <div onClick={rejectOffer} className={styles.rejectBtn}>
+              Reject
+            </div>
+          </div>
+        )
+      );
+    }
+  };
+
+  const { data, role, id, contestType } = props;
   const { avatar, firstName, lastName, email, rating } = props.data.User;
   return (
     <div className={styles.offerContainer}>
-      {offerStatus()}
+      {role !== CONSTANTS.MODERATOR ? offerStatus() : <p>Nichego</p>}
       <div className={styles.mainInfoContainer}>
         <div className={styles.userInfo}>
           <div className={styles.creativeInfoContainer}>
@@ -202,7 +221,9 @@ const OfferBox = (props) => {
           <i onClick={goChat} className="fas fa-comments" />
         )}
       </div>
-      {props.needButtons(data.status) && (
+      {checkForRender()}
+      {/* {props.needModeratorButtons ? <button>HI</button> : <button>NO</button>} */}
+      {/* {props.needButtons(data.status) && (
         <div className={styles.btnsContainer}>
           <div onClick={resolveOffer} className={styles.resolveBtn}>
             Resolve
@@ -211,100 +232,10 @@ const OfferBox = (props) => {
             Reject
           </div>
         </div>
-      )}
+      )} */}
       {/* {props.needModeratorButtons(data.moder)} */}
     </div>
   );
-  // } else {
-  //   return (
-  //     <div className={styles.offerContainer}>
-  //       {/* {offerStatus()} !!! это тоже модератору не нужно*/}
-  //       <div className={styles.mainInfoContainer}>
-  //         <div className={styles.userInfo}>
-  //           <div className={styles.creativeInfoContainer}>
-  //             <img src={CONSTANTS.ANONYM_IMAGE_PATH} alt="user" />
-  //             <div className={styles.nameAndEmail}>
-  //               <span>{`firstName lastName`}</span>
-  //               <span>{`email`}</span>
-  //             </div>
-  //           </div>
-  //           <div className={styles.creativeRating}>
-  //             <span className={styles.userScoreLabel}>Creative Rating </span>
-  //             {/* <Rating
-  //               initialRating={rating}
-  //               fractions={2}
-  //               fullSymbol={
-  //                 <img
-  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
-  //                   alt="star"
-  //                 />
-  //               }
-  //               placeholderSymbol={
-  //                 <img
-  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
-  //                   alt="star"
-  //                 />
-  //               }
-  //               emptySymbol={
-  //                 <img
-  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star-outline.png`}
-  //                   alt="star-outline"
-  //                 />
-  //               }
-  //               readonly
-  //             /> */}
-  //           </div>
-  //         </div>
-  //         <div className={styles.responseConainer}>
-  //           {contestType === CONSTANTS.LOGO_CONTEST ? (
-  //             <img
-  //               onClick={() =>
-  //                 props.changeShowImage({
-  //                   imagePath: data.fileName,
-  //                   isShowOnFull: true,
-  //                 })
-  //               }
-  //               className={styles.responseLogo}
-  //               src={`${CONSTANTS.publicURL}${data.fileName}`}
-  //               alt="logo"
-  //             />
-  //           ) : (
-  //             <span className={styles.response}>{data.text}</span>
-  //           )}
-  //           {/* {data.User.id !== id && (
-  //             <Rating
-  //               fractions={2}
-  //               fullSymbol={
-  //                 <img
-  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
-  //                   alt="star"
-  //                 />
-  //               }
-  //               placeholderSymbol={
-  //                 <img
-  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
-  //                   alt="star"
-  //                 />
-  //               }
-  //               emptySymbol={
-  //                 <img
-  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star-outline.png`}
-  //                   alt="star"
-  //                 />
-  //               }
-  //               onClick={changeMark}
-  //               placeholderRating={data.mark}
-  //             />
-  //           )} */}
-  //         </div>
-  //         {/* {role !== CONSTANTS.CREATOR && (
-  //           <i onClick={goChat} className="fas fa-comments" />
-  //         )} !!! этого не должно быть и у модератора */}
-  //       </div>
-  //       {/* {props.needModeratorButtons(data.moder)} */}
-  //     </div>
-  //   );
-  // }
 };
 
 const mapDispatchToProps = (dispatch) => ({

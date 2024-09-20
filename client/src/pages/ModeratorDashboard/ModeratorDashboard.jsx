@@ -1,18 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import TryAgain from '../../components/TryAgain/TryAgain';
 import CONSTANTS from '../../constants';
-import { clearUserStore } from '../../store/slices/userSlice';
 import { getUser } from '../../store/slices/userSlice';
-import {
-  getContestById,
-  setOfferStatus,
-  clearSetOfferStatusError,
-  changeEditContest,
-  changeContestViewMode,
-  changeShowImage,
-} from '../../store/slices/contestByIdSlice';
 import { getOffers } from '../../store/slices/offersSlice';
 import OfferBox from '../../components/OfferBox/OfferBox';
 
@@ -20,21 +10,18 @@ class ModeratorDashboard extends React.Component {
   componentDidMount() {
     console.log(this.props);
     if (!this.props.data) {
-      // this.props.getUser();
       this.props.getOffers();
-      // console.log(this.props.getOffers());
     }
-    // this.props.getOffers();
-    // console.log(this.props.getOffers());
   }
 
   needModeratorButtons = (offerModeratorStatus) => {
-    const contestCreatorId = this.props.contestByIdStore.contestData.User.id;
-    const userId = this.props.userStore.data.id;
-    return (
-      contestCreatorId === userId &&
-      offerModeratorStatus === CONSTANTS.OFFER_MODERATOR_STATUS_PENDING
-    );
+    // const contestCreatorId = this.props.contestByIdStore.contestData.User.id;
+    // const userId = this.props.userStore.data.id;
+    // return (
+    //   contestCreatorId === userId &&
+    //   offerModeratorStatus === CONSTANTS.OFFER_MODERATOR_STATUS_PENDING
+    // );
+    console.log(offerModeratorStatus);
   };
 
   setOfferList = () => {
@@ -51,16 +38,15 @@ class ModeratorDashboard extends React.Component {
           needModeratorButtons={this.needModeratorButtons}
           contestType={offers[i].Contest.contestType}
           date={new Date()}
-          // noUserDataForNow={true}
         />
       );
       console.log(array);
     }
-    // return array.length !== 0 ? (
-    //   array
-    // ) : (
-    //   <div>There is no suggestion at this moment</div>
-    // );
+    return array.length !== 0 ? (
+      array
+    ) : (
+      <div>There is no suggestion at this moment</div>
+    );
   };
   render() {
     return (
@@ -84,20 +70,9 @@ class ModeratorDashboard extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return state;
-// };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   getContests: (data) =>
-//     dispatch(getContests({ requestData: data, role: CONSTANTS.MODERATOR })),
-// });
-
-// export default connect(mapStateToProps)(ModeratorDashboard);
-
 const mapStateToProps = (state) => {
-  const { userStore, offersStore, contestByIdStore } = state;
-  return { userStore, offersStore, contestByIdStore };
+  const { userStore, offersStore } = state;
+  return { userStore, offersStore };
 };
 const mapDispatchToProps = (dispatch) => ({
   getUser: () => dispatch(getUser()),
