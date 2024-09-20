@@ -17,6 +17,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import './confirmStyle.css';
 
 const OfferBox = (props) => {
+  console.log(props);
   const findConversationInfo = () => {
     const { messagesPreview, id } = props;
     const participants = [id, props.data.User.id];
@@ -106,7 +107,8 @@ const OfferBox = (props) => {
     });
   };
 
-  const { data, role, id, contestType } = props;
+  const { data, role, id, contestType, noUserDataForNow } = props;
+  // if (noUserDataForNow === false) {
   const { avatar, firstName, lastName, email, rating } = props.data.User;
   return (
     <div className={styles.offerContainer}>
@@ -210,8 +212,99 @@ const OfferBox = (props) => {
           </div>
         </div>
       )}
+      {/* {props.needModeratorButtons(data.moder)} */}
     </div>
   );
+  // } else {
+  //   return (
+  //     <div className={styles.offerContainer}>
+  //       {/* {offerStatus()} !!! это тоже модератору не нужно*/}
+  //       <div className={styles.mainInfoContainer}>
+  //         <div className={styles.userInfo}>
+  //           <div className={styles.creativeInfoContainer}>
+  //             <img src={CONSTANTS.ANONYM_IMAGE_PATH} alt="user" />
+  //             <div className={styles.nameAndEmail}>
+  //               <span>{`firstName lastName`}</span>
+  //               <span>{`email`}</span>
+  //             </div>
+  //           </div>
+  //           <div className={styles.creativeRating}>
+  //             <span className={styles.userScoreLabel}>Creative Rating </span>
+  //             {/* <Rating
+  //               initialRating={rating}
+  //               fractions={2}
+  //               fullSymbol={
+  //                 <img
+  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
+  //                   alt="star"
+  //                 />
+  //               }
+  //               placeholderSymbol={
+  //                 <img
+  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
+  //                   alt="star"
+  //                 />
+  //               }
+  //               emptySymbol={
+  //                 <img
+  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star-outline.png`}
+  //                   alt="star-outline"
+  //                 />
+  //               }
+  //               readonly
+  //             /> */}
+  //           </div>
+  //         </div>
+  //         <div className={styles.responseConainer}>
+  //           {contestType === CONSTANTS.LOGO_CONTEST ? (
+  //             <img
+  //               onClick={() =>
+  //                 props.changeShowImage({
+  //                   imagePath: data.fileName,
+  //                   isShowOnFull: true,
+  //                 })
+  //               }
+  //               className={styles.responseLogo}
+  //               src={`${CONSTANTS.publicURL}${data.fileName}`}
+  //               alt="logo"
+  //             />
+  //           ) : (
+  //             <span className={styles.response}>{data.text}</span>
+  //           )}
+  //           {/* {data.User.id !== id && (
+  //             <Rating
+  //               fractions={2}
+  //               fullSymbol={
+  //                 <img
+  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
+  //                   alt="star"
+  //                 />
+  //               }
+  //               placeholderSymbol={
+  //                 <img
+  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star.png`}
+  //                   alt="star"
+  //                 />
+  //               }
+  //               emptySymbol={
+  //                 <img
+  //                   src={`${CONSTANTS.STATIC_IMAGES_PATH}star-outline.png`}
+  //                   alt="star"
+  //                 />
+  //               }
+  //               onClick={changeMark}
+  //               placeholderRating={data.mark}
+  //             />
+  //           )} */}
+  //         </div>
+  //         {/* {role !== CONSTANTS.CREATOR && (
+  //           <i onClick={goChat} className="fas fa-comments" />
+  //         )} !!! этого не должно быть и у модератора */}
+  //       </div>
+  //       {/* {props.needModeratorButtons(data.moder)} */}
+  //     </div>
+  //   );
+  // }
 };
 
 const mapDispatchToProps = (dispatch) => ({

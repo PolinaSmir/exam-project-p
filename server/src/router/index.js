@@ -3,6 +3,7 @@ const basicMiddlewares = require('../middlewares/basicMiddlewares');
 const hashPass = require('../middlewares/hashPassMiddle');
 const userController = require('../controllers/userController');
 const contestController = require('../controllers/contestController');
+const offerController = require('../controllers/offerController');
 const checkToken = require('../middlewares/checkToken');
 const validators = require('../middlewares/validators');
 const chatController = require('../controllers/chatController');
@@ -146,5 +147,8 @@ router.post(
 );
 
 router.post('/getCatalogs', checkToken.checkToken, chatController.getCatalogs);
+
+// http://localhost:5000/getOffers
+router.get('/getOffers', checkToken.checkToken, offerController.getOffers);
 
 module.exports = router;
