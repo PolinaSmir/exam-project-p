@@ -82,7 +82,10 @@ const OfferBox = (props) => {
   };
 
   const offerStatus = () => {
-    const { status } = props.data;
+    // console.log(props.data);
+    const { status, moderatorstatus } = props.data;
+    console.log(status);
+    console.log(moderatorstatus);
     if (status === CONSTANTS.OFFER_STATUS_REJECTED) {
       return (
         <i
@@ -109,8 +112,14 @@ const OfferBox = (props) => {
 
   const checkForRender = () => {
     if (props.needModeratorButtons) {
-      props.needModeratorButtons(props.data.moderatorstatus);
-      return <button>HI</button>;
+      return (
+        props.needModeratorButtons(props.data.moderatorstatus) && (
+          <div className={styles.btnsContainer}>
+            <div className={styles.resolveBtn}>Approve</div>
+            <div className={styles.rejectBtn}>Reject</div>
+          </div>
+        )
+      );
     } else if (props.needButtons) {
       return (
         props.needButtons(data.status) && (
@@ -128,10 +137,11 @@ const OfferBox = (props) => {
   };
 
   const { data, role, id, contestType } = props;
+  console.log(props);
   const { avatar, firstName, lastName, email, rating } = props.data.User;
   return (
     <div className={styles.offerContainer}>
-      {role !== CONSTANTS.MODERATOR ? offerStatus() : <p>Nichego</p>}
+      {role !== CONSTANTS.MODERATOR ? offerStatus() : <p>Check offer</p>}
       <div className={styles.mainInfoContainer}>
         <div className={styles.userInfo}>
           <div className={styles.creativeInfoContainer}>
@@ -191,7 +201,7 @@ const OfferBox = (props) => {
           ) : (
             <span className={styles.response}>{data.text}</span>
           )}
-          {data.User.id !== id && (
+          {data.User.id !== id && role !== CONSTANTS.MODERATOR && (
             <Rating
               fractions={2}
               fullSymbol={
@@ -217,23 +227,11 @@ const OfferBox = (props) => {
             />
           )}
         </div>
-        {role !== CONSTANTS.CREATOR && (
+        {role === CONSTANTS.CUSTOMER && (
           <i onClick={goChat} className="fas fa-comments" />
         )}
       </div>
       {checkForRender()}
-      {/* {props.needModeratorButtons ? <button>HI</button> : <button>NO</button>} */}
-      {/* {props.needButtons(data.status) && (
-        <div className={styles.btnsContainer}>
-          <div onClick={resolveOffer} className={styles.resolveBtn}>
-            Resolve
-          </div>
-          <div onClick={rejectOffer} className={styles.rejectBtn}>
-            Reject
-          </div>
-        </div>
-      )} */}
-      {/* {props.needModeratorButtons(data.moder)} */}
     </div>
   );
 };

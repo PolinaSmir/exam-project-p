@@ -22,6 +22,7 @@ class ModeratorDashboard extends React.Component {
     //   offerModeratorStatus === CONSTANTS.OFFER_MODERATOR_STATUS_PENDING
     // );
     console.log(offerModeratorStatus);
+    return offerModeratorStatus === 'pending';
   };
 
   setOfferList = () => {
@@ -30,17 +31,21 @@ class ModeratorDashboard extends React.Component {
     const { offers } = this.props.offersStore;
     console.log(offers);
     for (let i = 0; i < offers.length; i++) {
-      console.log(offers[i]);
-      array.push(
-        <OfferBox
-          data={offers[i]}
-          key={offers[i].id}
-          needModeratorButtons={this.needModeratorButtons}
-          contestType={offers[i].Contest.contestType}
-          date={new Date()}
-        />
-      );
-      console.log(array);
+      // console.log(offers[i]);
+      if (
+        offers[i].moderatorstatus === CONSTANTS.OFFER_MODERATOR_STATUS_PENDING
+      ) {
+        array.push(
+          <OfferBox
+            data={offers[i]}
+            key={offers[i].id}
+            needModeratorButtons={this.needModeratorButtons}
+            contestType={offers[i].Contest.contestType}
+            date={new Date()}
+          />
+        );
+      }
+      // console.log(array);
     }
     return array.length !== 0 ? (
       array
@@ -51,7 +56,7 @@ class ModeratorDashboard extends React.Component {
   render() {
     return (
       <div className="offersContainer">
-        <div className="offerBox">
+        {/* <div className="offerBox">
           <div className="infoCreator">
             <span>Name Surname</span>
             <span>email</span>
@@ -63,7 +68,7 @@ class ModeratorDashboard extends React.Component {
         <div className="buttonBox">
           <button>Approve</button>
           <button>Reject</button>
-        </div>
+        </div> */}
         <div>{this.setOfferList()}</div>
       </div>
     );

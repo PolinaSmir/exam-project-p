@@ -151,4 +151,6 @@ router.post('/getCatalogs', checkToken.checkToken, chatController.getCatalogs);
 // http://localhost:5000/getOffers
 router.get('/getOffers', checkToken.checkToken, offerController.getOffers);
 
+router.put('/setOfferModerator', offerController.setOfferModerator);
+
 module.exports = router;

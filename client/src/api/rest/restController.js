@@ -64,3 +64,5 @@ export const getContestById = (data) =>
   });
 
 export const getOffers = () => http.get('getOffers');
+
+// export const setOfferModerator = (data) => http.put('setOfferModerator', data);
